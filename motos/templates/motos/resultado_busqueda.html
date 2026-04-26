@@ -1,0 +1,33 @@
+{% extends "motos/padre.html" %}
+
+{% block contenidoQueCambia %}
+    <div class="mt-4">
+        <h1>Resultados de la búsqueda</h1>
+
+        {% if motos %}
+            <div class="row">
+                {% for moto in motos %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            {% if moto.imagen %}
+                                <img src="{{ moto.imagen.url }}" class="card-img-top" alt="{{ moto.modelo }}">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ moto.marca }} {{ moto.modelo }}</h5>
+                                <a href="{% url 'moto_detail' moto.id %}" class="btn btn-primary btn-sm">Ver detalle</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-warning">
+                No se encontraron motos que coincidan con tu búsqueda.
+            </div>
+        {% endif %}
+
+        <hr>
+        <a href="{% url 'buscar_moto' %}" class="btn btn-secondary">Nueva búsqueda</a>
+        <a href="{% url 'inicio' %}" class="btn btn-link">Volver al inicio</a>
+    </div>
+{% endblock %}

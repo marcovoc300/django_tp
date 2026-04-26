@@ -1,0 +1,7 @@
+<h1>Motos Registradas</h1>
+<ul>
+{% for m in motos %}
+    <li>{{ m.marca }} {{ m.modelo }} - {{ m.cilindrada }}cc</li>
+{% endfor %}
+</ul>
+<a href="{% url 'Inicio' %}">Volver al Inicio</a>

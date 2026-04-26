@@ -1,0 +1,31 @@
+{% extends "motos/padre.html" %}
+
+{% block contenidoQueCambia %}
+<div class="container mt-5">
+    <div class="card mx-auto" style="width: 20rem; text-align: center; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <h2 class="mb-4">Mi Perfil</h2>
+        
+        <div class="mb-3">
+            {% if perfil.imagen %}
+                <img src="{{ perfil.imagen.url }}" class="rounded-circle" alt="Avatar" style="width: 150px; height: 150px; object-fit: cover; border: 2px solid #ddd;">
+            {% else %}
+                <div class="bg-light rounded-circle mx-auto d-flex align-items-center justify-content-center" style="width: 150px; height: 150px; border: 2px dashed #ccc;">
+                    <span class="text-muted">Sin foto</span>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="card-body">
+            <h5 class="card-title">@{{ user.username }}</h5>
+            <p class="text-muted mb-1">{{ user.email }}</p>
+            <p class="card-text mt-3">
+                <strong>Bio:</strong><br>
+                {{ perfil.descripcion|default:"Todavía no agregaste una descripción." }}
+            </p>
+            
+            <hr>
+            <a href="{% url 'editar_perfil' %}" class="btn btn-primary w-100">Editar Perfil</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

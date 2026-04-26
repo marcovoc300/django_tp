@@ -1,0 +1,15 @@
+{% extends "motos/padre.html" %}
+
+{% block contenidoQueCambia %}
+<div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 500px; padding: 20px;">
+        <h2 class="text-center">Editar Mi Perfil</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success w-100">Guardar Cambios</button>
+            <a href="{% url 'perfil' %}" class="btn btn-secondary w-100 mt-2">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

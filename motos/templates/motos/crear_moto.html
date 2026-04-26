@@ -1,0 +1,18 @@
+{% extends "motos/padre.html" %}
+
+{% block contenidoQueCambia %}
+<div class="container mt-5">
+    <h1>Registrar nueva Moto</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        <button type="submit" class="btn btn-success">Guardar Moto</button>
+    </form>
+
+    <br>
+    <a href="{% url 'inicio' %}" class="btn btn-secondary">Volver al Inicio</a>
+</div>
+{% endblock %}

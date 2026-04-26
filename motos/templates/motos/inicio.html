@@ -1,0 +1,10 @@
+{% extends "motos/padre.html" %}
+
+{% block contenidoQueCambia %}
+    <h1>Bienvenido a la Web de Motos</h1>
+    <nav>
+        <a href="{% url 'motos_list' %}">Ver Catálogo</a> | 
+        <a href="{% url 'crear_moto' %}">Cargar Nueva Moto</a> |
+        <a href="{% url 'buscar_moto' %}">Buscar Moto</a>
+    </nav>
+{% endblock %}
