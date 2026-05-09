@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, authenticate, logout
+from django.urls import reverse_lazy
 from .models import Moto
 from .forms import MotoForm
 
@@ -9,7 +10,7 @@ from .forms import MotoForm
 def inicio(request):
     return render(request, "motos/inicio.html")
 
-# Listado y Detalle (CBV)
+# Listado y Detalle
 class MotoList(ListView):
     model = Moto
     template_name = "motos/motos_list.html"
@@ -18,6 +19,19 @@ class MotoList(ListView):
 class MotoDetail(DetailView):
     model = Moto
     template_name = "motos/moto_detail.html"
+
+# EDITAR MOTO (Esto lo pidió el profe)
+class MotoUpdate(UpdateView):
+    model = Moto
+    template_name = "motos/moto_form.html"
+    fields = ['marca', 'modelo', 'descripcion', 'anio', 'imagen']
+    success_url = reverse_lazy('motos_list')
+
+# ELIMINAR MOTO (Esto también lo pidió)
+class MotoDelete(DeleteView):
+    model = Moto
+    template_name = "motos/moto_confirm_delete.html"
+    success_url = reverse_lazy('motos_list')
 
 # Crear Moto
 def crear_moto(request):
@@ -40,7 +54,6 @@ def buscar_moto(request):
     return render(request, 'motos/resultado_busqueda.html', {'motos': motos, 'query': query})
 
 # --- USUARIOS ---
-
 def login_request(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
@@ -59,7 +72,7 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user) # Lo loguea automáticamente al registrarse
+            login(request, user)
             return redirect("inicio")
     else:
         form = UserCreationForm()

@@ -1,8 +1,29 @@
 {% extends "motos/padre.html" %}
+
 {% block contenidoQueCambia %}
-    <div class="container mt-5 text-center">
-        <h1>Acerca de mí</h1>
-        <p>Hola, soy Marco V, estudiante de Data Science.</p>
-        <p>Este es mi proyecto final de Python para Coderhouse, una app para entusiastas de las motos.</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h1 class="display-4">Sobre el Proyecto</h1>
+            <hr>
+            <div class="card shadow-sm p-4 mt-4">
+                <h3>¡Hola! Soy Marco</h3>
+                <p class="lead mt-3">
+                    Desarrollé esta plataforma impulsado por mi pasión por las **motos** y la libertad que brindan los **viajes** en dos ruedas.
+                </p>
+                <p>
+                    El objetivo de este sitio es crear un espacio donde los entusiastas puedan catalogar, buscar y gestionar información sobre diferentes modelos de motocicletas. 
+                </p>
+                <p>
+                    Este trabajo es el proyecto final para el curso de Python y Django, donde apliqué conocimientos de bases de datos, vistas basadas en clases y sistemas de usuarios para crear una herramienta funcional y útil para la comunidad motera.
+                </p>
+                <div class="mt-4">
+                    <span class="badge bg-primary">Python</span>
+                    <span class="badge bg-success">Django</span>
+                    <span class="badge bg-dark">Pasión por las Motos</span>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 {% endblock %}

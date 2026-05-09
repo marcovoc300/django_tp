@@ -1,0 +1,15 @@
+{% extends "motos/padre.html" %}
+
+{% block contenidoQueCambia %}
+<div class="container mt-5">
+    <div class="alert alert-danger" role="alert">
+        <h2>¿Estás seguro de que querés borrar la {{ object.marca }} {{ object.modelo }}?</h2>
+        <p>Esta acción no se puede deshacer.</p>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar definitivamente</button>
+        <a href="{% url 'motos_list' %}" class="btn btn-secondary">Cancelar y volver</a>
+    </form>
+</div>
+{% endblock %}
